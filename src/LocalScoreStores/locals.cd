@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="LocalScoreStores.Services.FileScoreStore">
+    <Position X="0.5" Y="0.5" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAABAAAAAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\FileScoreStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="LocalScoreStores.Services.LocalScoreStores">
+    <Position X="0.5" Y="2.75" Width="6.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAgABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Services\MemoryScoreStore.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

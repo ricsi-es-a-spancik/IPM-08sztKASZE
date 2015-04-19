@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="FullSignature">
+  <Class Name="DomainModel.LeaderboardEntry">
+    <Position X="6.5" Y="0.5" Width="2.75" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAoAAAAAAAEAAAAAAAABAQAAAAAAAAA=</HashCode>
+      <FileName>LeanderboardEntry.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsAssociation>
+      <Property Name="GameType" />
+    </ShowAsAssociation>
+  </Class>
+  <Interface Name="DomainModel.Contracts.IScoreStore">
+    <Position X="0.5" Y="0.5" Width="5.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Contracts\IScoreStore.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Enum Name="DomainModel.GameTypes">
+    <Position X="7.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAgAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>GameTypes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="DomainModel.Scopes">
+    <Position X="5.75" Y="2.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAggAAAAAAA=</HashCode>
+      <FileName>Scopes.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

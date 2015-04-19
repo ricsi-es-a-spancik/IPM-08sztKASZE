@@ -1,0 +1,8 @@
+<StyleCopSettings Version="105">
+  <GlobalSettings>
+    <CollectionProperty Name="RecognizedWords">
+      <Value>csv</Value>
+      <Value>Tac</Value>
+    </CollectionProperty>
+  </GlobalSettings>
+</StyleCopSettings>
