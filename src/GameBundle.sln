@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DatabaseScoreClient", "Data
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\ConsoleTest.csproj", "{20DAC829-A8CD-4F86-80A3-351757A5C0B5}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeView", "TicTacToeView\TicTacToeView.csproj", "{7731C3B3-9539-4F45-A164-2C4709C7E482}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{20DAC829-A8CD-4F86-80A3-351757A5C0B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20DAC829-A8CD-4F86-80A3-351757A5C0B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20DAC829-A8CD-4F86-80A3-351757A5C0B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
