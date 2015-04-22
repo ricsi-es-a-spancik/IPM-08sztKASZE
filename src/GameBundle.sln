@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTest", "ConsoleTest\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeView", "TicTacToeView\TicTacToeView.csproj", "{7731C3B3-9539-4F45-A164-2C4709C7E482}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourInARowView", "FourInARowView\FourInARowView.csproj", "{2094F77F-698A-4459-8E3B-F39AD0DAB3C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7731C3B3-9539-4F45-A164-2C4709C7E482}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2094F77F-698A-4459-8E3B-F39AD0DAB3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2094F77F-698A-4459-8E3B-F39AD0DAB3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2094F77F-698A-4459-8E3B-F39AD0DAB3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2094F77F-698A-4459-8E3B-F39AD0DAB3C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
