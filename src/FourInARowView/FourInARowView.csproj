@@ -47,13 +47,13 @@
     <Reference Include="PresentationFramework" />
   </ItemGroup>
   <ItemGroup>
-    <Page Include="FourInARowView.xaml">
+    <Compile Include="FourInARowWindow.xaml.cs">
+      <DependentUpon>FourInARowWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="FourInARowWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
-    <Compile Include="FourInARowView.xaml.cs">
-      <DependentUpon>FourInARowView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

@@ -10,18 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace FourInARowView
 {
     /// <summary>
-    /// Interaction logic for FourInARowView.xaml
+    /// Interaction logic for FourInARowWindow.xaml
     /// </summary>
-    public partial class FourInARowView : UserControl
+    public partial class FourInARowWindow : Window
     {
-
-        public FourInARowView()
+        public FourInARowWindow()
         {
             InitializeComponent();
         }
@@ -58,4 +56,31 @@ namespace FourInARowView
             return (int)value * 2;
         }
     }
+
+    public class WindowHeightConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return ((int)value * Constants.ButtonSize + Constants.Margin) + 50 + Constants.Margin;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (((int)value - Constants.Margin - 50) - Constants.Margin) / Constants.ButtonSize;
+        }
+    }
+
+    public class WindowWidthConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (int)value * Constants.ButtonSize + Constants.Margin;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return ((int)value - Constants.Margin) / Constants.ButtonSize;
+        }
+    }
+
 }
