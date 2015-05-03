@@ -41,6 +41,10 @@
   <ItemGroup>
     <Compile Include="Contracts\IScoreStore.cs" />
     <Compile Include="GameTypes.cs" />
+    <Compile Include="View\IFourInARowField.cs" />
+    <Compile Include="View\ITicTacToeField.cs" />
+    <Compile Include="View\IFourInARowViewModel.cs" />
+    <Compile Include="View\ITicTacToeViewModel.cs" />
     <Compile Include="Scopes.cs" />
     <Compile Include="LeaderboardEntry.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

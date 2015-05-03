@@ -10,18 +10,16 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
 namespace TicTacToeView
 {
     /// <summary>
-    /// Interaction logic for TicTacToeView.xaml
+    /// Interaction logic for TicTacToeWindow.xaml
     /// </summary>
-    public partial class TicTacToeView : UserControl
+    public partial class TicTacToeWindow : Window
     {
-
-        public TicTacToeView()
+        public TicTacToeWindow()
         {
             InitializeComponent();
         }
@@ -58,4 +56,31 @@ namespace TicTacToeView
             return (int)value * 2;
         }
     }
+
+    public class WindowHeightConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return ((int)value * Constants.ButtonSize + Constants.Margin) + 50 + Constants.Margin;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (((int)value - Constants.Margin - 50) - Constants.Margin) / Constants.ButtonSize;
+        }
+    }
+
+    public class WindowWidthConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return (int)value * Constants.ButtonSize + Constants.Margin;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            return ((int)value - Constants.Margin) / Constants.ButtonSize;
+        }
+    }
+
 }
