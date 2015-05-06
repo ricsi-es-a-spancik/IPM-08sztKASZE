@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.src.InterFaces
 {
-    interface IArtificalIntelligence
+    public interface IArtificalIntelligence
     {
 
     }

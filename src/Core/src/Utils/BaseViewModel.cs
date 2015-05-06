@@ -9,7 +9,7 @@ using System.ComponentModel;
 
 namespace Core.src.Utils
 {
-    class BaseViewModel : INotifyPropertyChanged
+    public class BaseViewModel : INotifyPropertyChanged
     {
         public event PropertyChangedEventHandler PropertyChanged;
 

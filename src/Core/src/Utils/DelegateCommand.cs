@@ -7,7 +7,7 @@ using System.Windows.Input;
 
 namespace Core.src.Utils
 {
-    class DelegateCommand : ICommand
+    public class DelegateCommand : ICommand
     {
         private readonly Action<Object> _execute;
         private readonly Func<Object, Boolean> _canExecute;

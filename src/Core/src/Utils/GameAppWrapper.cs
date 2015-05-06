@@ -9,7 +9,7 @@ using Core.src.Structures;
 
 namespace Core.src.Utils
 {
-    class GameAppWrapper : IGameApp
+    public class GameAppWrapper : IGameApp
     {
         protected readonly IGameApp original;
         public Player P1

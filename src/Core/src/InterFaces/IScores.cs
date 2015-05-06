@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.src.InterFaces
 {
-    interface IScores
+    public interface IScores
     {
         void WriteScore(Int64 score);
 

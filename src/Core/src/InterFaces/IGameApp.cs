@@ -7,7 +7,7 @@ using Core.src.Structures;
 
 namespace Core.src.InterFaces
 {
-    interface IGameApp
+    public interface IGameApp
     {
         void Initialize(Player p1, Player p2);
 

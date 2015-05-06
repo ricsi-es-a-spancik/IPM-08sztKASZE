@@ -4,12 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Core.src.InterFaces;
-using System.Collections.Generic;
 
 
 namespace Core.src.Structures
 {
-    class Computer : Player
+    public class Computer : Player
     {
         protected IArtificalIntelligence AIcomp;
 

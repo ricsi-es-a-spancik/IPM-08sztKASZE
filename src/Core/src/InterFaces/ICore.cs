@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.src.InterFaces
 {
-    interface ICore
+    public interface ICore
     {
         void register(IGameApp game);
     }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Core.src.Structures
 {
-    abstract class Player
+    public abstract class Player
     {
         public Boolean isHuman
         {
