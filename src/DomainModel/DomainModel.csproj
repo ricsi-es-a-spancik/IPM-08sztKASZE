@@ -41,6 +41,10 @@
   <ItemGroup>
     <Compile Include="Contracts\IScoreStore.cs" />
     <Compile Include="GameTypes.cs" />
+    <Compile Include="Model\AI\IArtificalIntelligence.cs" />
+    <Compile Include="Model\AI\INode.cs" />
+    <Compile Include="Model\AI\IState.cs" />
+    <Compile Include="Model\AI\IStep.cs" />
     <Compile Include="Model\IGameApp.cs" />
     <Compile Include="Model\Player\Computer.cs" />
     <Compile Include="Model\Player\Human.cs" />
@@ -58,9 +62,7 @@
   <ItemGroup>
     <None Include="domain.cd" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Model\AI\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

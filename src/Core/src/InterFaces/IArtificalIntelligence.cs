@@ -6,17 +6,17 @@ using System.Threading.Tasks;
 
 namespace Core.src.InterFaces
 {
-    class State { }
-    class Step { }
-    class Node { }
+    public class State { }
+    public class Step { }
+    public class Node { }
 
     public interface IArtificalIntelligence
     {
-        private void generateGametree(int depthLevel, Node root);
+        void generateGametree(int depthLevel, Node root);
         
-        public Step getNextStep();
-        public void setChildrenFunction(Func<State, List<Tuple<State, Step>>> getChildren_);
-        public void setEvaluationFunction(Func<State, int> evaluationFunction_);
-        public void setCurrentState(State state);
+        Step getNextStep();
+        void setChildrenFunction(Func<State, List<Tuple<State, Step>>> getChildren_);
+        void setEvaluationFunction(Func<State, int> evaluationFunction_);
+        void setCurrentState(State state);
     }
 }
