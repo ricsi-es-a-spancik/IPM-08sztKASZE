@@ -9,7 +9,7 @@ using System.Collections.ObjectModel;
 
 namespace DomainModel.View
 {
-    interface ITicTacToeViewModel : INotifyPropertyChanged
+    public interface ITicTacToeViewModel : INotifyPropertyChanged
     {
         ICommand BackCommand { get; }
 

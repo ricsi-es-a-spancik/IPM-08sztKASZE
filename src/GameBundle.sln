@@ -21,6 +21,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FourInARowView", "FourInARo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{E4AE1296-695F-41C1-A601-102ECC351A27}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeGameApp", "TicTacToeGameApp\TicTacToeGameApp.csproj", "{DAA2E2A0-A80C-45CC-98EB-BB217DCB5EBE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeModel", "TicTacToeModel\TicTacToeModel.csproj", "{BBA4A12E-3F56-42AF-AF91-29EC18C2C32B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TicTacToeViewModel", "TicTacToeViewModel\TicTacToeViewModel.csproj", "{65ED556F-38CF-4564-8677-44951B021688}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU

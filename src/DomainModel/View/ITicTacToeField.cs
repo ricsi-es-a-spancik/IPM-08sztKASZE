@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace DomainModel.View
 {
-    interface ITicTacToeField : INotifyPropertyChanged
+    public interface ITicTacToeField : INotifyPropertyChanged
     {
         String Player { get; }
 
