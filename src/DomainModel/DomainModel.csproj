@@ -49,6 +49,8 @@
     <Compile Include="Model\Player\Computer.cs" />
     <Compile Include="Model\Player\Human.cs" />
     <Compile Include="Model\Player\Player.cs" />
+    <Compile Include="Model\TicTacToe\FieldChangedEventArgs.cs" />
+    <Compile Include="Model\TicTacToe\GameOverEventArgs.cs" />
     <Compile Include="Model\TicTacToe\ITicTacToeModel.cs" />
     <Compile Include="View\IFourInARowField.cs" />
     <Compile Include="View\ITicTacToeField.cs" />
