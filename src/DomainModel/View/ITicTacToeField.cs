@@ -10,8 +10,8 @@ namespace DomainModel.View
 {
     public interface ITicTacToeField : INotifyPropertyChanged
     {
-        String Player { get; }
+        String Player { get; set; }
 
-        ICommand FieldChangedCommand { get; }
+        ICommand FieldChangedCommand { get; set; }
     }
 }

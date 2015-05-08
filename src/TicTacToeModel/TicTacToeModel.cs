@@ -13,8 +13,7 @@ namespace TicTacToeModel
         #region Private fields
 
         private Player currentPlayer;
-        private Player playerOne;
-        private Player playerTwo;
+
         private Player[,] gameTable; 
         private int stepNumber;
 
@@ -31,6 +30,9 @@ namespace TicTacToeModel
         /// Gets the player who is on turn.
         /// </summary>
         public Player CurrentPlayer { get { return currentPlayer; } }
+
+        public Player PlayerOne { get; private set; }
+        public Player PlayerTwo { get; private set; }
 
         /// <summary>
         /// Gets the given field's value.
@@ -82,8 +84,8 @@ namespace TicTacToeModel
         /// <param name="p2">Second player.</param>
         public void Initialize(Player p1, Player p2)
         {
-            playerOne = p1;
-            playerTwo = p2;
+            PlayerOne = p1;
+            PlayerTwo = p2;
 
             gameTable = new Player[3, 3];
 
@@ -102,7 +104,7 @@ namespace TicTacToeModel
                 }
 
             stepNumber = 0;
-            currentPlayer = playerOne; //first player starts
+            currentPlayer = PlayerOne; //first player starts
 
             OnGameStarted();
         }
@@ -127,7 +129,7 @@ namespace TicTacToeModel
             OnFieldChanged(col, row, currentPlayer); //emit field change event
 
             ++stepNumber;
-            currentPlayer = currentPlayer == playerOne ? playerTwo : playerOne; //next player
+            currentPlayer = currentPlayer == PlayerOne ? PlayerTwo : PlayerOne; //next player
 
             CheckGame();
         }

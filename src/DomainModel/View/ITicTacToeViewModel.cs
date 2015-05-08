@@ -6,11 +6,14 @@ using System.Threading.Tasks;
 using System.ComponentModel;
 using System.Windows.Input;
 using System.Collections.ObjectModel;
+using DomainModel.Model.TicTacToe;
 
 namespace DomainModel.View
 {
     public interface ITicTacToeViewModel : INotifyPropertyChanged
     {
+        void Initialize(ITicTacToeModel m);
+
         ICommand BackCommand { get; }
 
         ObservableCollection<ITicTacToeField> Fields { get; }

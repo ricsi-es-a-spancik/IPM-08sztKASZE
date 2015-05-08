@@ -24,6 +24,10 @@ namespace DomainModel.Model.TicTacToe
         /// </summary>
         Player.Player CurrentPlayer { get; }
 
+        Player.Player PlayerOne { get; }
+
+        Player.Player PlayerTwo { get; }
+
         /// <summary>
         /// Gets the number of steps of the current game.
         /// </summary>
