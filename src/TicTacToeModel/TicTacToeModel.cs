@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainModel.Model.AI;
 using DomainModel.Model.Player;
 using DomainModel.Model.TicTacToe;
+
 
 namespace TicTacToeModel
 {
@@ -87,7 +89,24 @@ namespace TicTacToeModel
             PlayerOne = p1;
             PlayerTwo = p2;
 
+            InitializeComputerPlayer(PlayerOne);
+            InitializeComputerPlayer(PlayerTwo);
+            
             gameTable = new Player[3, 3];
+        }
+
+        /// <summary>
+        /// Checks whether the given player is a Computer player an initializes the AI logic for it.
+        /// </summary>
+        /// <param name="player">The player to be checked.</param>
+        private void InitializeComputerPlayer(Player player)
+        {
+            if(player is Computer)
+            {
+                Computer cPlayer = player as Computer;
+                cPlayer.AI.setChildrenFunction(ChildrenFunction);
+                cPlayer.AI.setEvaluationFunction(EvaluationFunction);
+            }
         }
 
         /// <summary>
@@ -144,7 +163,26 @@ namespace TicTacToeModel
         private void CheckGame()
         {
             //finding the winner
+            Player winner = CheckWinner();
+            
+            if (winner != null) // no winner
+            {
+                ++winner.Score;
+                OnGameOver(winner); // emit game over event with winner player param
+            }
+            else if (stepNumber == 9) // it's a draft
+            {
+                OnGameOver(null); // emit game over event with no winnner
+            }
+        }
+
+        /// <summary>
+        /// Checks the game state and returns the player who won the game if it exists.
+        /// </summary>
+        private Player CheckWinner()
+        {
             Player winner = null;
+
             for (int i = 0; i < 3; ++i)
             {
                 if (gameTable[i, 0] != null && gameTable[i, 0] == gameTable[i, 1] && gameTable[i, 1] == gameTable[i, 2])
@@ -160,15 +198,7 @@ namespace TicTacToeModel
             if (gameTable[0, 2] != null && gameTable[0, 2] == gameTable[1, 1] && gameTable[1, 1] == gameTable[2, 0])
                 winner = gameTable[0, 2];
 
-            if (winner != null) // no winner
-            {
-                ++winner.Score;
-                OnGameOver(winner); // emit game over event with winner player param
-            }
-            else if (stepNumber == 9) // it's a draft
-            {
-                OnGameOver(null); // emit game over event with no winnner
-            }
+            return winner;
         }
 
         #endregion
@@ -206,5 +236,110 @@ namespace TicTacToeModel
         }
 
         #endregion
+
+        /// <summary>
+        /// Game logic state type used by AI component.
+        /// </summary>
+        private class State : IState 
+        {
+            /// <summary>
+            /// Initializes a new instance.
+            /// </summary>
+            public State() 
+            { 
+                GameTable = new Player[3, 3]; 
+            }
+
+            /// <summary>
+            /// Initializes a new instance.
+            /// </summary>
+            /// <param name="gameTable">The current gametable.</param>
+            /// <param name="currentPlayer">The player who is on turn.</param>
+            public State(Player[,] gameTable, Player currentPlayer) 
+            { 
+                GameTable = gameTable;
+                CurrentPlayer = currentPlayer;
+            }
+
+            /// <summary>
+            /// Current gametable.
+            /// </summary>
+            public Player[,] GameTable { get; set; }
+
+            /// <summary>
+            /// The player who is on turn.
+            /// </summary>
+            public Player CurrentPlayer { get; set; }
+        }
+
+        /// <summary>
+        /// Game logic step type used by AI component.
+        /// </summary>
+        private class Step : IStep 
+        { 
+            /// <summary>
+            /// Initializes a new instance.
+            /// </summary>
+            /// <param name="col">Column of the field to be marked.</param>
+            /// <param name="row">Row of the field to be marked.</param>
+            public Step(int col, int row)
+            {
+                Col = col;
+                Row = row;
+            }
+
+            /// <summary>
+            /// Column of the field to be marked.
+            /// </summary>
+            public int Col { get; set; } 
+            
+            /// <summary>
+            /// Row of the field to be marked.
+            /// </summary>
+            public int Row { get; set; } 
+        }
+
+        /// <summary>
+        /// Generates the next possible states. It is used by the AI logic.
+        /// </summary>
+        /// <param name="abstractState">The state whose children should be generated.</param>
+        /// <returns>The list of the children.</returns>
+        private List<Tuple<IState, IStep>> ChildrenFunction(IState abstractState)
+        {
+            List<Tuple<IState, IStep>> ret = new List<Tuple<IState, IStep>>();
+            State state = abstractState as State;
+            for (int col = 0; col < 3; ++col)
+            {
+                for (int row = 0; row < 3; ++row)
+                {
+                    if (state.GameTable[col,row] == null)
+                    {
+                        State newState = new State();
+                        Array.Copy(state.GameTable, newState.GameTable, state.GameTable.Length);
+                        newState.GameTable[col, row] = state.CurrentPlayer;
+                        newState.CurrentPlayer = state.CurrentPlayer;
+                        ret.Add(new Tuple<IState, IStep>(newState, new Step(col, row)));
+                    }
+                }
+            }
+
+            return ret;
+        }
+
+        /// <summary>
+        /// Evaluates the quality of the given state. It is used by the AI logic.
+        /// </summary>
+        /// <param name="abstractState">The state whose quality should be evaluated.</param>
+        /// <returns>An integer value indicating the quality of the state.</returns>
+        private int EvaluationFunction(IState abstractState)
+        {
+            State state = abstractState as State;
+            if(state.CurrentPlayer == CheckWinner())
+                return 10;
+            else if(CheckWinner() == null)
+                return 0;
+            else
+                return -10;
+        }
     }
 }

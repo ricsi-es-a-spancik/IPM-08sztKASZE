@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DomainModel.Model.AI;
 
 namespace DomainModel.Model.Player
 {
@@ -14,6 +15,14 @@ namespace DomainModel.Model.Player
         /// <summary>
         /// Initializes a new instance of Computer player.
         /// </summary>
-        public Computer() : base(false) { }
+        public Computer(IArtificalIntelligence ai) : base(false) 
+        {
+            AI = ai;
+        }
+
+        /// <summary>
+        /// AI logic.
+        /// </summary>
+        public IArtificalIntelligence AI { get; private set; }
     }
 }
