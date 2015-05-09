@@ -62,8 +62,6 @@ namespace TicTacToeViewModel
             _model.FieldChanged += new EventHandler<FieldChangedEventArgs>(Model_FieldChanged);
             _model.GameOver += new EventHandler<GameOverEventArgs>(Model_GameOver);
 
-            BackCommand = new DelegateCommand(param => OnGameExit());
-
             Fields = new ObservableCollection<ITicTacToeField>();
         }
 
@@ -156,14 +154,6 @@ namespace TicTacToeViewModel
         #endregion
 
         #region Event methods
-
-        /// <summary>
-        /// 
-        /// </summary>
-        private void OnGameExit()
-        {
-            throw new NotImplementedException();
-        }
 
         #endregion
 

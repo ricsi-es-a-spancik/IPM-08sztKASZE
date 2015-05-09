@@ -21,8 +21,18 @@ namespace DomainModel.Model
 
 
         /// <summary>
-        /// Emits when the current game is over.
+        /// Emits when the user exits the current game.
         /// </summary>
-        event EventHandler GameOver;
+        event EventHandler GameExit;
+
+        /// <summary>
+        /// Opens the game's window.
+        /// </summary>
+        void OpenWindow();
+
+        /// <summary>
+        /// Closes the game's window.
+        /// </summary>
+        void CloseWindow();
     }
 }
