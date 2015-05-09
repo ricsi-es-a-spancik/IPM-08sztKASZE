@@ -88,8 +88,6 @@ namespace TicTacToeModel
             PlayerTwo = p2;
 
             gameTable = new Player[3, 3];
-
-            NewGame();
         }
 
         /// <summary>
@@ -123,12 +121,14 @@ namespace TicTacToeModel
             if (stepNumber >= 9)
                 throw new InvalidOperationException("Game is over!");
             if (gameTable[col, row] != null)
-                throw new InvalidOperationException("Field is not empty!");
+                return;
+                //throw new InvalidOperationException("Field is not empty!");
 
             gameTable[col, row] = currentPlayer; //mark selected field
             OnFieldChanged(col, row, currentPlayer); //emit field change event
 
             ++stepNumber;
+
             currentPlayer = currentPlayer == PlayerOne ? PlayerTwo : PlayerOne; //next player
 
             CheckGame();
@@ -162,6 +162,7 @@ namespace TicTacToeModel
 
             if (winner != null) // no winner
             {
+                ++winner.Score;
                 OnGameOver(winner); // emit game over event with winner player param
             }
             else if (stepNumber == 9) // it's a draft

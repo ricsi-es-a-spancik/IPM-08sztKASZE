@@ -42,7 +42,7 @@ namespace TicTacToeViewModel
         /// <summary>
         /// Gets or sets the command which changes the state of the field.
         /// </summary>
-        public ICommand FieldChangedCommand { get; set; }
+        public ICommand FieldChangeCommand { get; set; }
 
         /// <summary>
         /// Emits property change event.

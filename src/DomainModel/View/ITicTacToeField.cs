@@ -12,6 +12,6 @@ namespace DomainModel.View
     {
         String Player { get; set; }
 
-        ICommand FieldChangedCommand { get; set; }
+        ICommand FieldChangeCommand { get; set; }
     }
 }

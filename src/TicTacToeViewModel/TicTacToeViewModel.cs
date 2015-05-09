@@ -32,7 +32,8 @@ namespace TicTacToeViewModel
 
         public string StatusText
         {
-            get { throw new NotImplementedException(); }
+            get { return _statusText; }
+            set { _statusText = value; OnPropertyChanged(); }
         }
 
         /// <summary>
@@ -44,6 +45,11 @@ namespace TicTacToeViewModel
         /// Game logic.
         /// </summary>
         private ITicTacToeModel _model;
+
+        /// <summary>
+        /// Indicates the status of the game.
+        /// </summary>
+        private string _statusText;
 
         /// <summary>
         /// Initializes the current instance.
@@ -59,8 +65,6 @@ namespace TicTacToeViewModel
             BackCommand = new DelegateCommand(param => OnGameExit());
 
             Fields = new ObservableCollection<ITicTacToeField>();
-
-            _model.NewGame();
         }
 
         #region Private methods
@@ -81,13 +85,24 @@ namespace TicTacToeViewModel
                         Player = PlayerToField(_model[x, y]),
                         Col = x,
                         Row = y,
-                        FieldChangedCommand = new DelegateCommand(param =>
+                        FieldChangeCommand = new DelegateCommand(param =>
                         {
                             _model.StepGame((param as TicTacToeField).Col, (param as TicTacToeField).Row);
                         })
                     });
                 }
             }
+        }
+
+        /// <summary>
+        /// Updating the status text according to the current player.
+        /// </summary>
+        private void UpdateStatusText(Player player)
+        {
+            if (player == _model.PlayerOne)
+                StatusText = "A kör játékos következik.";
+            else
+                StatusText = "A kereszt játékos következik.";
         }
 
         /// <summary>
@@ -115,6 +130,7 @@ namespace TicTacToeViewModel
         private void Model_GameStarted(object sender, EventArgs e)
         {
             InitBoard();
+            StatusText = "A kereszt játékos következik.";
         }
 
         /// <summary>
@@ -125,7 +141,8 @@ namespace TicTacToeViewModel
             Fields.FirstOrDefault(f => 
                 { var field = f as TicTacToeField; return field.Col == e.Col && field.Row == e.Row;})
                 .Player = PlayerToField(_model[e.Col, e.Row]);
-            // lineáris keresés a megadott sorra, oszlopra, majd a játékos átírása
+
+            UpdateStatusText(e.Player);
         }
 
         /// <summary>
@@ -133,7 +150,7 @@ namespace TicTacToeViewModel
         /// </summary>
         private void Model_GameOver(object sender, GameOverEventArgs e)
         {
-            throw new NotImplementedException();
+            //throw new NotImplementedException();
         }
 
         #endregion
