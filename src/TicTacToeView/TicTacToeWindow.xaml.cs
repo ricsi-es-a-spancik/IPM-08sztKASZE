@@ -29,6 +29,28 @@ namespace TicTacToeView
     {
         public const Double ButtonSize = 100;
         public const Double Margin = 30;
+        public const Double ButtonFont = ButtonSize / 2;
+    }
+
+    public class PlayerToLockConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if(value == null || (String)value == "")
+            {
+                return true;
+            }
+
+            return false;
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if ((Boolean)value)
+                return "Player";
+            else
+                return "";
+        }
     }
 
     public class SizeToPixelSizeConverter : IValueConverter
@@ -61,7 +83,14 @@ namespace TicTacToeView
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return ((int)value * Constants.ButtonSize + Constants.Margin) + 50 + Constants.Margin;
+            if(parameter == null)
+                return ((int)value * Constants.ButtonSize + Constants.Margin) + 50 + Constants.Margin;
+            if (parameter.ToString() == "min")
+                return ((int)value * Constants.ButtonSize + Constants.Margin);
+            if (parameter.ToString() == "max")
+                return ((int)value * Constants.ButtonSize + Constants.Margin) + 50 + (int)value * Constants.Margin;
+            else
+                return ((int)value * Constants.ButtonSize + Constants.Margin) + 50 + Constants.Margin;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
@@ -74,7 +103,14 @@ namespace TicTacToeView
     {
         public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
         {
-            return (int)value * Constants.ButtonSize + Constants.Margin;
+            if(parameter == null)
+                return (int)value * Constants.ButtonSize + Constants.Margin;
+            if (parameter.ToString() == "min")
+                return (int)value * Constants.ButtonSize;
+            if (parameter.ToString() == "max")
+                return (int)value * Constants.ButtonSize + (int)value * Constants.Margin;
+            else
+                return (int)value * Constants.ButtonSize + Constants.Margin;
         }
 
         public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
