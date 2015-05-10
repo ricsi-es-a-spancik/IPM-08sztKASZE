@@ -11,6 +11,7 @@ using DomainModel.Contracts;
 using Microsoft.Practices.Unity;
 using Microsoft.Practices.Unity.Configuration;
 using DomainModel;
+using DomainModel.Model;
 
 
 namespace Core
@@ -49,15 +50,16 @@ namespace Core
             _window.Show();
         }
 
-        private void LaunchNewGame(object sender, src.InterFaces.IGameApp e)
+        private void LaunchNewGame(object sender, IGameApp e)
         {
             GameAppWrapper wrap = (GameAppWrapper)e;
             if (this._currentGame == null)
             {
                 _window.Close();
                 this._currentGame = wrap;
-                this._currentGame.GameOver += GameOver;
+                this._currentGame.GameExit += GameExit;
                 wrap.Initialize();
+                wrap.OpenWindow();
             }
             else
             {
@@ -65,9 +67,9 @@ namespace Core
             }
         }
 
-        private void GameOver(object sender, EventArgs e)
+        private void GameExit(object sender, EventArgs e)
         {
-            this._currentGame.GameOver -= GameOver;
+            this._currentGame.GameExit -= GameExit;
 
             LeaderboardEntry board = new LeaderboardEntry{
                 UserName = "test",
@@ -78,6 +80,8 @@ namespace Core
             };
 
             _store.AddLeaderboardEntryAsync(board);
+
+            this._currentGame.CloseWindow();
 
             this._currentGame = null;
 

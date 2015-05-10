@@ -7,6 +7,9 @@ using System.Windows.Input;
 
 using Core.src.InterFaces;
 using Core.src.Utils;
+using DomainModel.Model;
+
+using TicTacToeGameApp;
 
 
 using System.Collections.ObjectModel;
@@ -45,14 +48,17 @@ namespace Core.src
         {
             model = new CoreModel();
 
-            LaunchGameCommand = new DelegateCommand(param => { onGameLaunch(param); });
+            model.LaunchGame += onGameLaunch;
 
             // Register Game applications
+
+            model.register(new TicTacToeGameApp.TicTacToeGameApp(), "TicTacToe");
+
         }
 
-        private void onGameLaunch(object param)
+        private void onGameLaunch(object sender,Int32 param)
         {
-            Int32 Id = (Int32)param;
+            Int32 Id = param;
             GameAppWrapper current = GameList[(int)Id];
 
             current.P1 = model.P1;

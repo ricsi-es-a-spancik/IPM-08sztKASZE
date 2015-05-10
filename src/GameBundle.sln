@@ -69,6 +69,18 @@ Global
 		{E4AE1296-695F-41C1-A601-102ECC351A27}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E4AE1296-695F-41C1-A601-102ECC351A27}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E4AE1296-695F-41C1-A601-102ECC351A27}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DAA2E2A0-A80C-45CC-98EB-BB217DCB5EBE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DAA2E2A0-A80C-45CC-98EB-BB217DCB5EBE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DAA2E2A0-A80C-45CC-98EB-BB217DCB5EBE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DAA2E2A0-A80C-45CC-98EB-BB217DCB5EBE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBA4A12E-3F56-42AF-AF91-29EC18C2C32B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBA4A12E-3F56-42AF-AF91-29EC18C2C32B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBA4A12E-3F56-42AF-AF91-29EC18C2C32B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBA4A12E-3F56-42AF-AF91-29EC18C2C32B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65ED556F-38CF-4564-8677-44951B021688}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65ED556F-38CF-4564-8677-44951B021688}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65ED556F-38CF-4564-8677-44951B021688}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65ED556F-38CF-4564-8677-44951B021688}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
