@@ -4,18 +4,17 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6D1AADB3-87BE-40D4-AA95-85CD3D04FC9C}</ProjectGuid>
-    <OutputType>WinExe</OutputType>
+    <ProjectGuid>{94A7E546-0AE7-454B-B812-D3BE314BC5A8}</ProjectGuid>
+    <OutputType>library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TicTacToeTest</RootNamespace>
-    <AssemblyName>TicTacToeTest</AssemblyName>
+    <RootNamespace>TicTacToeView2</RootNamespace>
+    <AssemblyName>TicTacToeView2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -25,7 +24,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -36,6 +34,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -47,16 +46,6 @@
     <Reference Include="WindowsBase" />
     <Reference Include="PresentationCore" />
     <Reference Include="PresentationFramework" />
-  </ItemGroup>
-  <ItemGroup>
-    <ApplicationDefinition Include="App.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </ApplicationDefinition>
-    <Compile Include="App.xaml.cs">
-      <DependentUpon>App.xaml</DependentUpon>
-      <SubType>Code</SubType>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -72,6 +61,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TicTacToeWindow.xaml.cs">
+      <DependentUpon>TicTacToeWindow.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -83,29 +75,28 @@
     <AppDesigner Include="Properties\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Page Include="TicTacToeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DomainModel\DomainModel.csproj">
-      <Project>{77a0fa50-2bc5-4107-8ff2-1e415e0a64fe}</Project>
-      <Name>DomainModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TicTacToeModel\TicTacToeModel.csproj">
-      <Project>{bba4a12e-3f56-42af-af91-29ec18c2c32b}</Project>
-      <Name>TicTacToeModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TicTacToeView2\TicTacToeView2.csproj">
-      <Project>{94a7e546-0ae7-454b-b812-d3be314bc5a8}</Project>
-      <Name>TicTacToeView2</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TicTacToeViewModel\TicTacToeViewModel.csproj">
-      <Project>{65ed556f-38cf-4564-8677-44951b021688}</Project>
-      <Name>TicTacToeViewModel</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TicTacToeView\TicTacToeView.csproj">
-      <Project>{7731c3b3-9539-4f45-a164-2c4709c7e482}</Project>
-      <Name>TicTacToeView</Name>
-    </ProjectReference>
+    <Resource Include="Resources\notebook_paper.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_gametable.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\none.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\player_one.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\player_two.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Resources\background_notebook.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
