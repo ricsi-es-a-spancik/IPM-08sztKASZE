@@ -66,13 +66,7 @@
     <Compile Include="src\Utils\BaseViewModel.cs" />
     <Compile Include="src\Utils\DelegateCommand.cs" />
     <Compile Include="src\CoreModel.cs" />
-    <Compile Include="src\InterFaces\IArtificalIntelligence.cs" />
     <Compile Include="src\InterFaces\ICore.cs" />
-    <Compile Include="src\InterFaces\IGameApp.cs" />
-    <Compile Include="src\InterFaces\IScores.cs" />
-    <Compile Include="src\Structures\Computer.cs" />
-    <Compile Include="src\Structures\Human.cs" />
-    <Compile Include="src\Structures\Player.cs" />
     <Compile Include="src\Utils\GameAppWrapper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -132,6 +126,10 @@
     <ProjectReference Include="..\RemoteScoreClient\RemoteScoreClient.csproj">
       <Project>{bda9587b-8d9d-40cd-baa6-364e4d2010fd}</Project>
       <Name>RemoteScoreClient</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TicTacToeGameApp\TicTacToeGameApp.csproj">
+      <Project>{daa2e2a0-a80c-45cc-98eb-bb217dcb5ebe}</Project>
+      <Name>TicTacToeGameApp</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

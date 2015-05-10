@@ -5,13 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 
 using Core.src.InterFaces;
-using Core.src.Structures;
+using DomainModel.Model;
+using DomainModel.Model.Player;
 
 namespace Core.src.Utils
 {
     public class GameAppWrapper : IGameApp
     {
         protected readonly IGameApp original;
+
+        public event EventHandler GameExit;
+
         public Player P1
         {
             get;
@@ -31,21 +35,44 @@ namespace Core.src.Utils
             protected set;
         }
 
+        public String GameName
+        {
+            get;
+            protected set;
+        }
 
-        public GameAppWrapper(IGameApp original, Int32 Id)
+        public DelegateCommand LaunchGameCommand
+        {
+            get;
+            set;
+        }
+
+
+        public GameAppWrapper(IGameApp original, Int32 Id, String name)
         {
             this.original = original;
 
-            this.original.GameOver += original_GameOver;
+            this.original.GameExit += original_GameExit;
             this.Id = Id;
+            this.GameName = name;
         }
 
-        void original_GameOver(object sender, EventArgs e)
+        void original_GameExit(object sender, EventArgs e)
         {
-            this.GameOver(this, e);
+            this.GameExit(this, e);
         }
 
-        public void Initialize(Structures.Player p1, Structures.Player p2)
+        public void CloseWindow()
+        {
+            original.CloseWindow();
+        }
+
+        public void OpenWindow()
+        {
+            original.OpenWindow();
+        }
+
+        public void Initialize(Player p1, Player p2)
         {
             this.original.Initialize(p1, p2);
         }
@@ -54,8 +81,5 @@ namespace Core.src.Utils
         {
             this.original.Initialize(this.P1, this.P2);
         }
-
-
-        public event EventHandler GameOver;
     }
 }

@@ -12,7 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 
-namespace TicTacToeView
+namespace TicTacToeView2
 {
     /// <summary>
     /// Interaction logic for TicTacToeWindow.xaml
@@ -50,6 +50,35 @@ namespace TicTacToeView
                 return "Player";
             else
                 return "";
+        }
+    }
+
+    public class PlayerToPlayerConverter : IValueConverter
+    {
+        public object Convert(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null || (String)value == "")
+            {
+                return "None";
+            }
+            if ((String)value == "X")
+                return "One";
+            if ((String)value == "O")
+                return "Two";
+
+            return "ERROR";
+        }
+
+        public object ConvertBack(object value, Type targetType, object parameter, System.Globalization.CultureInfo culture)
+        {
+            if (value == null)
+                return "";
+            if ((String)value == "One")
+                return "X";
+            if ((String)value == "Two")
+                return "O";
+
+            return "";
         }
     }
 

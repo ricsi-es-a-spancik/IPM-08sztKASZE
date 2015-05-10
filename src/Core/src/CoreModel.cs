@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
 using Core.src.InterFaces;
+using DomainModel.Model;
+using DomainModel.Model.Player;
 using Core.src.Utils;
-using Core.src.Structures;
 
 namespace Core.src
 {
@@ -39,15 +40,20 @@ namespace Core.src
             }
         }
 
+        public event EventHandler<Int32> LaunchGame;
+
         public CoreModel()
         {
             registeredGames = 0;
             Games = new ObservableCollection<GameAppWrapper>();
         }
 
-        public void register(IGameApp game)
+        public void register(IGameApp game, String GameName)
         {
-            GameAppWrapper newGameWrapper = new GameAppWrapper(game, registeredGames);
+            GameAppWrapper newGameWrapper = new GameAppWrapper(game, registeredGames, GameName);
+            newGameWrapper.LaunchGameCommand = new DelegateCommand(
+                param => { LaunchGame(this,(Int32)param);
+            });
             ++registeredGames;
             Games.Add(newGameWrapper);
         }
