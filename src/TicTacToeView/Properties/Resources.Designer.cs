@@ -9,6 +9,7 @@
 //------------------------------------------------------------------------------
 
 namespace TicTacToeView.Properties {
+    using System;
     
     
     /// <summary>
@@ -37,7 +38,7 @@ namespace TicTacToeView.Properties {
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
-                if ((resourceMan == null)) {
+                if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("TicTacToeView.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
@@ -56,6 +57,16 @@ namespace TicTacToeView.Properties {
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap silver_background_image {
+            get {
+                object obj = ResourceManager.GetObject("silver_background_image", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
     }
