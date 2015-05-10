@@ -81,5 +81,11 @@ namespace Core.src.Utils
         {
             this.original.Initialize(this.P1, this.P2);
         }
+
+
+        public DomainModel.GameTypes GameType
+        {
+            get { throw new NotImplementedException(); }
+        }
     }
 }

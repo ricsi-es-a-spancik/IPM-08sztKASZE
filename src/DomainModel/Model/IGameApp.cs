@@ -19,6 +19,7 @@ namespace DomainModel.Model
         /// <param name="p2">Second player.</param>
         void Initialize(Player.Player p1, Player.Player p2);
 
+        GameTypes GameType { get; }
 
         /// <summary>
         /// Emits when the user exits the current game.
