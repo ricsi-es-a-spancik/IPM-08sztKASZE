@@ -9,6 +9,7 @@ using TicTacToeModel;
 using TicTacToeViewModel;
 using DomainModel.Model.Player;
 using DomainModel.Model.TicTacToe;
+using AI;
 
 namespace TicTacToeTest
 {
@@ -35,7 +36,7 @@ namespace TicTacToeTest
         private void App_Startup(object sender, StartupEventArgs e)
         {
             _model = new TicTacToeModel.TicTacToeModel();
-            _model.Initialize(new Human(), new Human());
+            _model.Initialize(new Human(), new Computer(new AlphaBetaAI()));
             _model.GameOver += new EventHandler<GameOverEventArgs>(Model_GameOver);
 
             _viewModel = new TicTacToeViewModel.TicTacToeViewModel();

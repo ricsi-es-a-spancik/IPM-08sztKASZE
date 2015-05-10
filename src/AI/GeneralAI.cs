@@ -4,13 +4,13 @@ using DomainModel.Model.AI;
 
 namespace AI
 {
-    class GeneralAI : IArtificalIntelligence
+    public class GeneralAI : IArtificalIntelligence
     {
         public Node root { get; protected set; }
         protected Func<IState, List<Tuple<IState, IStep>>> getChildren;
         protected Func<IState, int> evaluationFunction;
 
-        public void generateGametree(int depthLevel, Node root)
+        protected void generateGametree(int depthLevel, Node root)
         {
             if (depthLevel != 0)
             {
@@ -31,7 +31,7 @@ namespace AI
             }
         }
 
-        public IStep getNextStep()
+        public virtual IStep getNextStep()
         {
             return root.lastStep;
         }
@@ -48,7 +48,7 @@ namespace AI
 
         public void setCurrentState(IState state)
         {
-            root.state = state;
+            root = new Node(state);
         }
     }
 }

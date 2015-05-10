@@ -86,6 +86,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AI\AI.csproj">
+      <Project>{f7a743c7-d16a-4638-8116-94d8a1167532}</Project>
+      <Name>AI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{77a0fa50-2bc5-4107-8ff2-1e415e0a64fe}</Project>
       <Name>DomainModel</Name>

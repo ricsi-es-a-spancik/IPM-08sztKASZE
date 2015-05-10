@@ -4,7 +4,7 @@ using DomainModel.Model.AI;
 
 namespace AI
 {
-    class AlphaBetaAI : GeneralAI
+    public class AlphaBetaAI : GeneralAI
     {
         public AlphaBetaAI()
         {
@@ -49,9 +49,11 @@ namespace AI
             }
         }
 
-        public IStep getNextStep()
+        public override IStep getNextStep()
         {
+            generateGametree(10, root);
             int maxValue = alphabeta(root, Int32.MinValue, Int32.MaxValue, true);
+            System.Diagnostics.Debug.WriteLine(maxValue);
             IStep result = root.children.Find(x => x.value == maxValue).lastStep;
             return result;
         }

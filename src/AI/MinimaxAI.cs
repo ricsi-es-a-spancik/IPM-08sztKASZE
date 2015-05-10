@@ -4,7 +4,7 @@ using DomainModel.Model.AI;
 
 namespace AI
 {
-    class MinimaxAI : GeneralAI
+    public class MinimaxAI : GeneralAI
     {
         public MinimaxAI()
         {
@@ -65,8 +65,9 @@ namespace AI
             }
         }
 
-        public IStep getNextStep()
+        public override IStep getNextStep()
         {
+            generateGametree(10, root);
             return minimax(root);
         }
     }

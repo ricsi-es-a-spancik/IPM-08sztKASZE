@@ -4,7 +4,7 @@ using DomainModel.Model.AI;
 
 namespace AI
 {
-    class Node : INode
+    public class Node : INode
     {
         public int value { get; set; }
         public IState state { get; set; }
