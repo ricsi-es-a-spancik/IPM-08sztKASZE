@@ -6,6 +6,10 @@ namespace AI
 {
     class MinimaxAI : GeneralAI
     {
+        public MinimaxAI()
+        {
+            root = new Node(null);
+        }
         private IStep minimax(Node root)
         {
             int maxValue = max(root);

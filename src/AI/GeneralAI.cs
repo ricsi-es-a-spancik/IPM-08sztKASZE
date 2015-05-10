@@ -6,7 +6,7 @@ namespace AI
 {
     class GeneralAI : IArtificalIntelligence
     {
-        public Node root { get; private set; }
+        public Node root { get; protected set; }
         protected Func<IState, List<Tuple<IState, IStep>>> getChildren;
         protected Func<IState, int> evaluationFunction;
 

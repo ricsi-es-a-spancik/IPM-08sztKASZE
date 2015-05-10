@@ -6,6 +6,10 @@ namespace AI
 {
     class AlphaBetaAI : GeneralAI
     {
+        public AlphaBetaAI()
+        {
+            root = new Node(null);
+        }
         private int alphabeta(Node root, int alpha, int beta, bool maximizingPlayer)
         {
             if (root.isLeaf())
