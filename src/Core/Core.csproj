@@ -46,6 +46,7 @@
     <Reference Include="System" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -111,6 +112,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AI\AI.csproj">
+      <Project>{f7a743c7-d16a-4638-8116-94d8a1167532}</Project>
+      <Name>AI</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DatabaseScoreClient\DatabaseScoreClient.csproj">
       <Project>{86a28426-d59c-4f3f-a342-21e0ba617864}</Project>
       <Name>DatabaseScoreClient</Name>

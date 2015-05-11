@@ -85,7 +85,7 @@ namespace Core.src.Utils
 
         public DomainModel.GameTypes GameType
         {
-            get { throw new NotImplementedException(); }
+            get { return original.GameType; }
         }
     }
 }

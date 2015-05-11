@@ -8,6 +8,7 @@ using System.Collections.ObjectModel;
 using Core.src.InterFaces;
 using DomainModel.Model;
 using DomainModel.Model.Player;
+using DomainModel.Model.AI;
 using Core.src.Utils;
 
 namespace Core.src
@@ -24,12 +25,12 @@ namespace Core.src
         public Player P1
         {
             get;
-            set;
+            protected set;
         }
         public Player P2
         {
             get;
-            set;
+            protected set;
         }
 
         public Int32 GameNum
@@ -56,6 +57,16 @@ namespace Core.src
             });
             ++registeredGames;
             Games.Add(newGameWrapper);
+        }
+
+        public void setAI(IArtificalIntelligence AI)
+        {
+            P2 = new Computer(AI);
+        }
+
+        public void removeAI()
+        {
+            P2 = new Human();
         }
     }
 }

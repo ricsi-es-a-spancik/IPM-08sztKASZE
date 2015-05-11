@@ -11,13 +11,13 @@
         </Grid.RowDefinitions>
         
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="100"/>
-            <ColumnDefinition/>
-            <ColumnDefinition Width="100"/>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="5*"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
         <Menu Grid.Row="0" Grid.ColumnSpan="3">
             <MenuItem Header="File" Height="25">
-                <MenuItem Header="Modul Betöltése" Height="25" Command="{Binding showLoadModuleWindow}"/>
+                <MenuItem Header="Modul Betöltése" Height="25" Command="{Binding showLoadModule}"/>
             </MenuItem>
             <MenuItem Header="Beállítások" Height="25">
                 <MenuItem Header="Számítógép Beállítás" Height="25">
