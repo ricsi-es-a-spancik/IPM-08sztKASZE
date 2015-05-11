@@ -71,12 +71,14 @@ namespace Core.src
         {
             OpenFileDialog dlg = new OpenFileDialog();
             dlg.Filter = "Module file|.dll";
+            dlg.CheckPathExists = true;
+            dlg.Multiselect = false;
             DialogResult dr = dlg.ShowDialog();
 
             if(dr == DialogResult.OK)
             {
                 String filename = dlg.FileName;
-                IGameApp gameApp = Activator.CreateInstanceFrom(filename, "gameApp").Unwrap() as IGameApp;
+                IGameApp gameApp = Activator.CreateInstanceFrom(filename, "GameApp").Unwrap() as IGameApp;
                 model.register(gameApp, "Egyedi Játék");
                 OnPropertyChanged("GameList");
             }
