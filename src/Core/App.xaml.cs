@@ -55,7 +55,7 @@ namespace Core
             GameAppWrapper wrap = (GameAppWrapper)e;
             if (this._currentGame == null)
             {
-                _window.Close();
+                _window.Hide();
                 this._currentGame = wrap;
                 this._currentGame.GameExit += GameExit;
                 wrap.Initialize();

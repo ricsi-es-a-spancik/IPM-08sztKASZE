@@ -131,6 +131,22 @@
       <Project>{daa2e2a0-a80c-45cc-98eb-bb217dcb5ebe}</Project>
       <Name>TicTacToeGameApp</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TicTacToeModel\TicTacToeModel.csproj">
+      <Project>{bba4a12e-3f56-42af-af91-29ec18c2c32b}</Project>
+      <Name>TicTacToeModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TicTacToeTest\TicTacToeTest.csproj">
+      <Project>{6d1aadb3-87be-40d4-aa95-85cd3d04fc9c}</Project>
+      <Name>TicTacToeTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TicTacToeViewModel\TicTacToeViewModel.csproj">
+      <Project>{65ed556f-38cf-4564-8677-44951b021688}</Project>
+      <Name>TicTacToeViewModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TicTacToeView\TicTacToeView.csproj">
+      <Project>{7731c3b3-9539-4f45-a164-2c4709c7e482}</Project>
+      <Name>TicTacToeView</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

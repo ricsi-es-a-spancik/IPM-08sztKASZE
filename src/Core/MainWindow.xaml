@@ -9,12 +9,24 @@
             <RowDefinition Height="10*"/>
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
-        <Menu Grid.Row="0">
-            <MenuItem Header="File" Height="25" Command="{Binding LoadModuleCommand}">
-                <TextBlock><Run Text="Modul Betöltése"/></TextBlock>
+        
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100"/>
+            <ColumnDefinition/>
+            <ColumnDefinition Width="100"/>
+        </Grid.ColumnDefinitions>
+        <Menu Grid.Row="0" Grid.ColumnSpan="3">
+            <MenuItem Header="File" Height="25">
+                <MenuItem Header="Modul Betöltése" Height="25" Command="{Binding showLoadModuleWindow}"/>
+            </MenuItem>
+            <MenuItem Header="Beállítások" Height="25">
+                <MenuItem Header="Számítógép Beállítás" Height="25">
+                    <MenuItem Header="Nincs" Command="{Binding setAICommand}" CommandParameter="0"/>
+                    <MenuItem Header="Könnyű" Command="{Binding setAICommand}" CommandParameter="1"/>
+                </MenuItem>
             </MenuItem>
         </Menu>
-        <ItemsControl Grid.Row="1" ItemsSource="{Binding GameList}">
+        <ItemsControl Grid.Row="1" Grid.Column="1" ItemsSource="{Binding GameList}">
             <ItemsControl.Background>
                 <SolidColorBrush>
                     <SolidColorBrush.Color>
@@ -37,7 +49,7 @@
                         </DataTemplate>
                     </ItemsControl.ItemTemplate>
         </ItemsControl>
-        <StatusBar Grid.Row="2">
+        <StatusBar Grid.Row="2" Grid.ColumnSpan="2">
             <StatusBarItem>
                 <TextBlock DataContext="{Binding Status}"/>
             </StatusBarItem>
