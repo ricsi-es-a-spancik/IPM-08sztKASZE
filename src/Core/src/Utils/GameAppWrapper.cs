@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using Core.src.InterFaces;
 using DomainModel.Model;
 using DomainModel.Model.Player;
 

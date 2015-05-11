@@ -45,6 +45,7 @@
     <Compile Include="Model\AI\INode.cs" />
     <Compile Include="Model\AI\IState.cs" />
     <Compile Include="Model\AI\IStep.cs" />
+    <Compile Include="Model\ICore.cs" />
     <Compile Include="Model\IGameApp.cs" />
     <Compile Include="Model\Player\Computer.cs" />
     <Compile Include="Model\Player\Human.cs" />

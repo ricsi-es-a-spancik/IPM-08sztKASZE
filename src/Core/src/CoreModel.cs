@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Collections.ObjectModel;
 
-using Core.src.InterFaces;
+
 using DomainModel.Model;
 using DomainModel.Model.Player;
 using DomainModel.Model.AI;

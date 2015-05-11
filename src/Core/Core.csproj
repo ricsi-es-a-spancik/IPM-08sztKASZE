@@ -67,7 +67,6 @@
     <Compile Include="src\Utils\BaseViewModel.cs" />
     <Compile Include="src\Utils\DelegateCommand.cs" />
     <Compile Include="src\CoreModel.cs" />
-    <Compile Include="src\InterFaces\ICore.cs" />
     <Compile Include="src\Utils\GameAppWrapper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>

@@ -4,9 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using DomainModel.Model;
-
-namespace Core.src.InterFaces
+namespace DomainModel.Model
 {
     public interface ICore
     {
