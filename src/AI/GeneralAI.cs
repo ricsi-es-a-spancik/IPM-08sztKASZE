@@ -12,7 +12,11 @@ namespace AI
 
         protected void generateGametree(int depthLevel, Node root)
         {
-            if (depthLevel != 0)
+            if (depthLevel == 1) //leaves
+            {
+                root.value = evaluationFunction(root.state);
+            }
+            else
             {
                 List<Tuple<IState, IStep>> children = getChildren(root.state);
                 foreach (Tuple<IState, IStep> t in children)
@@ -22,11 +26,6 @@ namespace AI
                 foreach (Node n in root.children)
                 {
                     generateGametree(depthLevel - 1, n);
-                }
-
-                if (depthLevel == 1) //leaves
-                {
-                    root.value = evaluationFunction(root.state);
                 }
             }
         }
