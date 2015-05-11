@@ -22,7 +22,9 @@
             <MenuItem Header="Beállítások" Height="25">
                 <MenuItem Header="Számítógép Beállítás" Height="25">
                     <MenuItem Header="Nincs" Command="{Binding setAICommand}" CommandParameter="0"/>
-                    <MenuItem Header="Könnyű" Command="{Binding setAICommand}" CommandParameter="1"/>
+                    <MenuItem Header="Alpha-Beta AI" Command="{Binding setAICommand}" CommandParameter="1"/>
+                    <MenuItem Header="GeneralAI" Command="{Binding setAICommand}" CommandParameter="2"/>
+                    <MenuItem Header="Mini-Max AI" Command="{Binding setAICommand}" CommandParameter="3"/>
                 </MenuItem>
             </MenuItem>
         </Menu>
