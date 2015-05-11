@@ -1,0 +1,118 @@
+﻿<Window x:Class="TicTacToeView2.TicTacToeWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:local="clr-namespace:TicTacToeView2"
+        Title="Tic Tac Toe" >
+
+    <Window.Resources>
+        <local:SizeToPixelSizeConverter x:Key="SizeToPixelSizeConverter" />
+        <local:SizeToFontSizeConverter x:Key="SizeToFontSizeConverter" />
+        <local:WindowHeightConverter x:Key="WindowHeightConverter" />
+        <local:WindowWidthConverter x:Key="WindowWidthConverter" />
+        <local:PlayerToLockConverter x:Key="PlayerToLockConverter" />
+        <local:PlayerToPlayerConverter x:Key="PlayerToPlayerConverter" />
+
+        
+    </Window.Resources>
+
+    <Window.Background>
+        <ImageBrush ImageSource="Resources/background_notebook.png" />
+    </Window.Background>
+    <Window.MinHeight>
+        <Binding Path="Size" Converter="{StaticResource WindowHeightConverter}" ConverterParameter="min" />
+    </Window.MinHeight>
+    <Window.Height>
+        <Binding Path="Size" Converter="{StaticResource WindowHeightConverter}" />
+    </Window.Height>
+    <Window.MaxHeight>
+        <Binding Path="Size" Converter="{StaticResource WindowHeightConverter}" ConverterParameter="max" />
+    </Window.MaxHeight>
+    <Window.MinWidth>
+        <Binding Path="Size" Converter="{StaticResource WindowWidthConverter}" ConverterParameter="min" />
+    </Window.MinWidth>
+    <Window.Width>
+        <Binding Path="Size" Converter="{StaticResource WindowWidthConverter}" />
+    </Window.Width>
+    <Window.MaxWidth>
+        <Binding Path="Size" Converter="{StaticResource WindowWidthConverter}" ConverterParameter="max" />
+    </Window.MaxWidth>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <Button Grid.Row="0" Content="Vissza a Menübe" 
+                Width="100" Height="30" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,0,0,0"
+                Command="{Binding BackCommand}" />
+
+        <TextBlock Grid.Row="0"
+                   HorizontalAlignment="Right" VerticalAlignment="Center" Margin="0,0,10,0"
+                   Text="{Binding StatusText}" />
+
+        <Viewbox Grid.Row="1">
+            <Viewbox.Resources>
+                <Style TargetType="Button" BasedOn="{StaticResource {x:Type Button}}">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="Button">
+                                <Border x:Name="Border" 
+                      BorderThickness="1"
+                      Background="{TemplateBinding Background}"
+                      BorderBrush="{TemplateBinding BorderBrush}">
+                                    <ContentPresenter Margin="2"
+                                    HorizontalAlignment="Center"
+                                    VerticalAlignment="Center"
+                                    RecognizesAccessKey="True"/>
+                                </Border>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Viewbox.Resources>
+            
+            <ItemsControl ItemsSource="{Binding Fields}" 
+                          Width="{Binding Size, Converter={StaticResource SizeToPixelSizeConverter}}" 
+                          Height="{Binding Size, Converter={StaticResource SizeToPixelSizeConverter}}" >
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid FlowDirection="LeftToRight" Rows="{Binding Size}" Columns="{Binding Size}" >
+                            <UniformGrid.Background>
+                                <ImageBrush ImageSource="pack://application:,,,/TicTacToeView2;component/Resources/background_gametable.png" />
+                            </UniformGrid.Background>
+                        </UniformGrid>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ItemsControl.ItemTemplate>
+                    <DataTemplate>
+                        <Button Command="{Binding FieldChangeCommand}" CommandParameter="{Binding}"
+                                Background="{x:Null}" BorderBrush="{x:Null}"
+                                FontSize="{x:Static local:Constants.ButtonFont}"
+                                Width="{x:Static local:Constants.ButtonSize}"
+                                Height="{x:Static local:Constants.ButtonSize}"
+                                IsEnabled="{Binding Player, Converter={StaticResource PlayerToLockConverter}}" >
+                            <Image>
+                                <Image.Style>
+                                    <Style TargetType="{x:Type Image}">
+                                        <Style.Triggers>
+                                            <DataTrigger Binding="{Binding Player, Converter={StaticResource PlayerToPlayerConverter}}" Value="None">
+                                                <Setter Property="Source" Value="pack://application:,,,/TicTacToeView2;component/Resources/none.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Player, Converter={StaticResource PlayerToPlayerConverter}}" Value="One">
+                                                <Setter Property="Source" Value="pack://application:,,,/TicTacToeView2;component/Resources/player_one.png" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding Player, Converter={StaticResource PlayerToPlayerConverter}}" Value="Two">
+                                                <Setter Property="Source" Value="pack://application:,,,/TicTacToeView2;component/Resources/player_two.png" />
+                                            </DataTrigger>
+                                        </Style.Triggers>
+                                    </Style>
+                                </Image.Style>
+                            </Image>
+                        </Button>
+                    </DataTemplate>
+                </ItemsControl.ItemTemplate>
+            </ItemsControl>
+        </Viewbox>
+    </Grid>
+</Window>

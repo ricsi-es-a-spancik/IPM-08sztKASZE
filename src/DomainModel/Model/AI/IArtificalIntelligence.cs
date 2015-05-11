@@ -8,8 +8,6 @@ namespace DomainModel.Model.AI
 {
     public interface IArtificalIntelligence
     {
-        void generateGametree(int depthLevel, INode root);
-
         IStep getNextStep();
         void setChildrenFunction(Func<IState, List<Tuple<IState, IStep>>> getChildren_);
         void setEvaluationFunction(Func<IState, int> evaluationFunction_);

@@ -96,20 +96,6 @@ namespace TicTacToeModel
         }
 
         /// <summary>
-        /// Checks whether the given player is a Computer player an initializes the AI logic for it.
-        /// </summary>
-        /// <param name="player">The player to be checked.</param>
-        private void InitializeComputerPlayer(Player player)
-        {
-            if(player is Computer)
-            {
-                Computer cPlayer = player as Computer;
-                cPlayer.AI.setChildrenFunction(ChildrenFunction);
-                cPlayer.AI.setEvaluationFunction(EvaluationFunction);
-            }
-        }
-
-        /// <summary>
         /// Starts a new game
         /// </summary>
         public void NewGame()
@@ -124,6 +110,8 @@ namespace TicTacToeModel
             currentPlayer = PlayerOne; //first player starts
 
             OnGameStarted();
+
+            StepComputerPlayer();
         }
 
         /// <summary>
@@ -150,7 +138,10 @@ namespace TicTacToeModel
 
             currentPlayer = currentPlayer == PlayerOne ? PlayerTwo : PlayerOne; //next player
 
-            CheckGame();
+            if(!CheckGame())
+            {
+                StepComputerPlayer();
+            }
         }
 
         #endregion
@@ -158,28 +149,61 @@ namespace TicTacToeModel
         #region Private methods
 
         /// <summary>
+        /// Checks whether the given player is a Computer player an initializes the AI logic for it.
+        /// </summary>
+        /// <param name="player">The player to be checked.</param>
+        private void InitializeComputerPlayer(Player player)
+        {
+            if (!player.IsHuman)
+            {
+                Computer cPlayer = player as Computer;
+                cPlayer.AI.setChildrenFunction(ChildrenFunction);
+                cPlayer.AI.setEvaluationFunction(EvaluationFunction);
+            }
+        }
+
+        /// <summary>
+        /// Checks if the current player is a computer player and steps the game accordingly.
+        /// </summary>
+        private void StepComputerPlayer()
+        {
+            if(!CurrentPlayer.IsHuman)
+            {
+                Computer ComputerPlayer = CurrentPlayer as Computer;
+                ComputerPlayer.AI.setCurrentState(new State(gameTable, ComputerPlayer, ComputerPlayer));
+                Step nextStep = ComputerPlayer.AI.getNextStep() as Step;
+                StepGame(nextStep.Col, nextStep.Row);
+            }
+        }
+
+        /// <summary>
         /// Checking game state.
         /// </summary>
-        private void CheckGame()
+        /// <returns>A bool value indicating whether the game is over or not.</returns>
+        private bool CheckGame()
         {
             //finding the winner
-            Player winner = CheckWinner();
+            Player winner = CheckWinner(gameTable);
             
             if (winner != null) // no winner
             {
                 ++winner.Score;
                 OnGameOver(winner); // emit game over event with winner player param
+                return true;
             }
             else if (stepNumber == 9) // it's a draft
             {
                 OnGameOver(null); // emit game over event with no winnner
+                return true;
             }
+
+            return false;
         }
 
         /// <summary>
         /// Checks the game state and returns the player who won the game if it exists.
         /// </summary>
-        private Player CheckWinner()
+        private Player CheckWinner(Player[,] gameTable)
         {
             Player winner = null;
 
@@ -254,11 +278,14 @@ namespace TicTacToeModel
             /// Initializes a new instance.
             /// </summary>
             /// <param name="gameTable">The current gametable.</param>
-            /// <param name="currentPlayer">The player who is on turn.</param>
-            public State(Player[,] gameTable, Player currentPlayer) 
-            { 
-                GameTable = gameTable;
-                CurrentPlayer = currentPlayer;
+            /// <param name="playerOnTurn">The player who is on turn.</param>
+            /// <param name="aiPlayer">The player with ai.</param>
+            public State(Player[,] gameTable, Player playerOnTurn, Computer aiPlayer)
+            {
+                GameTable = new Player[3, 3];
+                Array.Copy(gameTable, GameTable, gameTable.Length);
+                PlayerOnTurn = playerOnTurn;
+                AIPlayer = AIPlayer;
             }
 
             /// <summary>
@@ -269,7 +296,9 @@ namespace TicTacToeModel
             /// <summary>
             /// The player who is on turn.
             /// </summary>
-            public Player CurrentPlayer { get; set; }
+            public Player PlayerOnTurn { get; set; }
+
+            public Computer AIPlayer { get; set; }
         }
 
         /// <summary>
@@ -314,10 +343,9 @@ namespace TicTacToeModel
                 {
                     if (state.GameTable[col,row] == null)
                     {
-                        State newState = new State();
-                        Array.Copy(state.GameTable, newState.GameTable, state.GameTable.Length);
-                        newState.GameTable[col, row] = state.CurrentPlayer;
-                        newState.CurrentPlayer = state.CurrentPlayer;
+                        Player playerOnTurn = state.PlayerOnTurn == PlayerOne ? PlayerTwo : PlayerOne;
+                        State newState = new State(state.GameTable, playerOnTurn, state.AIPlayer);
+                        newState.GameTable[col, row] = state.PlayerOnTurn;
                         ret.Add(new Tuple<IState, IStep>(newState, new Step(col, row)));
                     }
                 }
@@ -334,9 +362,10 @@ namespace TicTacToeModel
         private int EvaluationFunction(IState abstractState)
         {
             State state = abstractState as State;
-            if(state.CurrentPlayer == CheckWinner())
+            Player winner = CheckWinner(state.GameTable);
+            if (state.AIPlayer == winner)
                 return 10;
-            else if(CheckWinner() == null)
+            else if (winner == null)
                 return 0;
             else
                 return -10;

@@ -5,6 +5,7 @@ using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows;
+using DomainModel;
 using DomainModel.Model;
 using DomainModel.Model.Player;
 using DomainModel.Model.TicTacToe;
@@ -14,6 +15,8 @@ namespace TicTacToeGameApp
 {
     public class TicTacToeGameApp : IGameApp
     {
+        public GameTypes GameType { get { return GameTypes.TicTacToe; } }
+
         public event EventHandler GameExit;
 
         private ITicTacToeModel _model;

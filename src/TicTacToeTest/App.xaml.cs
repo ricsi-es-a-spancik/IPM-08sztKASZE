@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 using System.Windows;
 using TicTacToeModel;
 using TicTacToeViewModel;
-using TicTacToeView;
 using DomainModel.Model.Player;
 using DomainModel.Model.TicTacToe;
+using AI;
 
 namespace TicTacToeTest
 {
@@ -20,7 +20,7 @@ namespace TicTacToeTest
     {
         private TicTacToeModel.TicTacToeModel _model;
         private TicTacToeViewModel.TicTacToeViewModel _viewModel;
-        private TicTacToeWindow _window;
+        private TicTacToeView2.TicTacToeWindow _window;
 
         /// <summary>
         /// Alkalmazás példányosítása.
@@ -36,7 +36,7 @@ namespace TicTacToeTest
         private void App_Startup(object sender, StartupEventArgs e)
         {
             _model = new TicTacToeModel.TicTacToeModel();
-            _model.Initialize(new Human(), new Human());
+            _model.Initialize(new Human(), new Computer(new AlphaBetaAI()));
             _model.GameOver += new EventHandler<GameOverEventArgs>(Model_GameOver);
 
             _viewModel = new TicTacToeViewModel.TicTacToeViewModel();
@@ -44,7 +44,7 @@ namespace TicTacToeTest
 
             _model.NewGame();
 
-            _window = new TicTacToeWindow();
+            _window = new TicTacToeView2.TicTacToeWindow();
             _window.DataContext = _viewModel;
             _window.Show();
         }
