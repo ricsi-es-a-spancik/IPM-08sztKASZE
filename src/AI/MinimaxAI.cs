@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DomainModel.Model.AI;
+using System.Diagnostics;
 
 namespace AI
 {
@@ -13,6 +14,7 @@ namespace AI
         private IStep minimax(Node root)
         {
             int maxValue = max(root);
+            Debug.WriteLine(maxValue);
             IStep result = root.children.Find(x => x.value == maxValue).lastStep;
             return result;
         }
@@ -37,6 +39,7 @@ namespace AI
                     }
                 }
 
+                root.value = lowestValue;
                 return lowestValue;
             }
         }
@@ -61,13 +64,14 @@ namespace AI
                     }
                 }
 
+                root.value = highestValue;
                 return highestValue;
             }
         }
 
         public override IStep getNextStep()
         {
-            generateGametree(10, root);
+            generateGametree(4, root);
             return minimax(root);
         }
     }
