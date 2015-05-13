@@ -14,7 +14,6 @@ namespace AI
         private IStep minimax(Node root)
         {
             int maxValue = max(root);
-            Debug.WriteLine(maxValue);
             IStep result = root.children.Find(x => x.value == maxValue).lastStep;
             return result;
         }
@@ -71,7 +70,7 @@ namespace AI
 
         public override IStep getNextStep()
         {
-            generateGametree(4, root);
+            generateGametree(10, root);
             return minimax(root);
         }
     }

@@ -170,7 +170,8 @@ namespace TicTacToeModel
             if(!CurrentPlayer.IsHuman)
             {
                 Computer ComputerPlayer = CurrentPlayer as Computer;
-                ComputerPlayer.AI.setCurrentState(new State(gameTable, ComputerPlayer, ComputerPlayer));
+                State state = new State(gameTable, ComputerPlayer, ComputerPlayer);
+                ComputerPlayer.AI.setCurrentState(state);
                 Step nextStep = ComputerPlayer.AI.getNextStep() as Step;
                 StepGame(nextStep.Col, nextStep.Row);
             }
@@ -285,7 +286,7 @@ namespace TicTacToeModel
                 GameTable = new Player[3, 3];
                 Array.Copy(gameTable, GameTable, gameTable.Length);
                 PlayerOnTurn = playerOnTurn;
-                AIPlayer = AIPlayer;
+                AIPlayer = aiPlayer;
             }
 
             /// <summary>
@@ -337,16 +338,20 @@ namespace TicTacToeModel
         {
             List<Tuple<IState, IStep>> ret = new List<Tuple<IState, IStep>>();
             State state = abstractState as State;
-            for (int col = 0; col < 3; ++col)
-            {
-                for (int row = 0; row < 3; ++row)
+
+            if (CheckWinner(state.GameTable) == null)
+            { 
+                for (int col = 0; col < 3; ++col)
                 {
-                    if (state.GameTable[col,row] == null)
+                    for (int row = 0; row < 3; ++row)
                     {
-                        Player playerOnTurn = state.PlayerOnTurn == PlayerOne ? PlayerTwo : PlayerOne;
-                        State newState = new State(state.GameTable, playerOnTurn, state.AIPlayer);
-                        newState.GameTable[col, row] = state.PlayerOnTurn;
-                        ret.Add(new Tuple<IState, IStep>(newState, new Step(col, row)));
+                        if (state.GameTable[col,row] == null)
+                        {
+                            Player playerOnTurn = state.PlayerOnTurn == PlayerOne ? PlayerTwo : PlayerOne;
+                            State newState = new State(state.GameTable, playerOnTurn, state.AIPlayer);
+                            newState.GameTable[col, row] = state.PlayerOnTurn;
+                            ret.Add(new Tuple<IState, IStep>(newState, new Step(col, row)));
+                        }
                     }
                 }
             }
