@@ -19,6 +19,11 @@
             <MenuItem Header="File" Height="25">
                 <MenuItem Header="Modul Betöltése" Height="25" Command="{Binding showLoadModule}"/>
             </MenuItem>
+            <MenuItem Header="Pontszámok" Height="25">
+                <MenuItem Header="TicTacToe" Height="25" Command="{Binding showScoreWindow}" CommandParameter="1"/>
+                <MenuItem Header="NineManMorris" Height="25" Command="{Binding showScoreWindow}" CommandParameter="2"/>
+                <MenuItem Header="ConnectFour" Height="25" Command="{Binding showScoreWindow}" CommandParameter="3"/>
+            </MenuItem>
             <MenuItem Header="Beállítások" Height="25">
                 <MenuItem Header="Számítógép Beállítás" Height="25">
                     <MenuItem Header="Nincs" Command="{Binding setAICommand}" CommandParameter="0"/>

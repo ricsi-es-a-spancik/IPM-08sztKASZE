@@ -46,6 +46,8 @@ namespace Core.src
         public CoreModel()
         {
             registeredGames = 0;
+            P1 = new Human();
+            P2 = new Human();
             Games = new ObservableCollection<GameAppWrapper>();
         }
 

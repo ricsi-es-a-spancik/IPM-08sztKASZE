@@ -8,6 +8,7 @@ using System.Windows.Forms;
 
 using Core.src.Utils;
 using DomainModel.Model;
+using DomainModel.Contracts;
 
 using AI;
 
@@ -16,7 +17,7 @@ using TicTacToeGameApp;
 
 using System.Collections.ObjectModel;
 
-namespace Core.src
+namespace Core.src.ViewModels
 {
     class CoreViewModel : BaseViewModel
     {
@@ -36,6 +37,12 @@ namespace Core.src
             protected set;
         }
 
+        public DelegateCommand showScoreWindow
+        {
+            get;
+            protected set;
+        }
+
         public ObservableCollection<GameAppWrapper> GameList
         {
             get
@@ -43,6 +50,8 @@ namespace Core.src
                 return model.Games;
             }
         }
+
+        public EventHandler<Int32> showScoreEvent;
 
         public Int32 GameNum
         {
@@ -60,11 +69,18 @@ namespace Core.src
 
             showLoadModule = new DelegateCommand(param => { onLoadModule(); });
             setAICommand = new DelegateCommand(param => { onSetAI(param); });
+            showScoreWindow = new DelegateCommand(param => { onShowScore(param); });
 
             // Register Game applications
 
             model.register(new TicTacToeGameApp.TicTacToeGameApp(), "TicTacToe");
 
+        }
+
+        private void onShowScore(object param)
+        {
+            Int32 code = Int32.Parse((String)param);
+            showScoreEvent(this,code);
         }
 
         private void onLoadModule()
