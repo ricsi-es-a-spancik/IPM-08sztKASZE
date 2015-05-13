@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using DomainModel;
 using DomainModel.View;
 using DomainModel.Model.Player;
 using DomainModel.Model.TicTacToe;
@@ -18,7 +19,7 @@ namespace TicTacToeViewModel
         /// <summary>
         /// Command for ending the current game.
         /// </summary>
-        public ICommand BackCommand { get; private set; }
+        public ICommand BackCommand { get; set; }
 
         /// <summary>
         /// Viewmodel for the gameboard.

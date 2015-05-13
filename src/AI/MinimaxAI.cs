@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DomainModel.Model.AI;
+using System.Diagnostics;
 
 namespace AI
 {
@@ -37,6 +38,7 @@ namespace AI
                     }
                 }
 
+                root.value = lowestValue;
                 return lowestValue;
             }
         }
@@ -61,6 +63,7 @@ namespace AI
                     }
                 }
 
+                root.value = highestValue;
                 return highestValue;
             }
         }
