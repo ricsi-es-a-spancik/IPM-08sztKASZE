@@ -33,7 +33,7 @@ namespace TicTacToeGameApp
             _viewModel = Activator.CreateInstanceFrom("TicTacToeViewModel.dll", "TicTacToeViewModel.TicTacToeViewModel")
                 .Unwrap() as ITicTacToeViewModel;
             _viewModel.Initialize(_model);
-            //_viewModel.BackCommand = new DelegateCommand(p => ViewModel_GameExit());
+            _viewModel.BackCommand = new DelegateCommand(p => ViewModel_GameExit());
 
             _model.NewGame();
 

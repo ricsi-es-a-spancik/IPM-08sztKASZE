@@ -14,7 +14,7 @@ namespace DomainModel.View
     {
         void Initialize(ITicTacToeModel m);
 
-        ICommand BackCommand { get; }
+        ICommand BackCommand { get; set; }
 
         ObservableCollection<ITicTacToeField> Fields { get; }
 

@@ -19,7 +19,7 @@ namespace TicTacToeViewModel
         /// <summary>
         /// Command for ending the current game.
         /// </summary>
-        public ICommand BackCommand { get; private set; }
+        public ICommand BackCommand { get; set; }
 
         /// <summary>
         /// Viewmodel for the gameboard.
