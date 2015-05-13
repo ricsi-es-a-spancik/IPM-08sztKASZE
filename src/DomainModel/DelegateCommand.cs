@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Input;
 
-namespace TicTacToeViewModel
+namespace DomainModel
 {
     /// <summary>
     /// General command type.

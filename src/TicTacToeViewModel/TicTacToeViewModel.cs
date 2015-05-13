@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Runtime.CompilerServices;
+using DomainModel;
 using DomainModel.View;
 using DomainModel.Model.Player;
 using DomainModel.Model.TicTacToe;
