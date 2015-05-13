@@ -5,19 +5,19 @@
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+            <RowDefinition Height="2*"/>
             <RowDefinition Height="10*"/>
         </Grid.RowDefinitions>
         <Button Content="Back to Menu" Command="{Binding BackToMenuCommand}" Grid.Row="0"/>
-        <Grid Grid.Row="1">
+        <Grid Grid.Row="1" VerticalAlignment="Center">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
-            <Label Grid.Column="0" Content="Name"/>
-            <Label Grid.Column="1" Content="Score"/>
-            <Label Grid.Column="2" Content="Date"/>
+            <Label HorizontalAlignment="Center" Grid.Column="0" Content="Name"/>
+            <Label HorizontalAlignment="Center" Grid.Column="1" Content="Score"/>
+            <Label HorizontalAlignment="Center" Grid.Column="2" Content="Date"/>
         </Grid>
         <ItemsControl ItemsSource="{Binding Entries}" Grid.Row="2">
             <ItemsControl.ItemsPanel>
