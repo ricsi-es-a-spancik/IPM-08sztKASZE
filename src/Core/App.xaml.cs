@@ -55,7 +55,7 @@ namespace Core
             _window.Show();
         }
 
-        private void showScore(object sender, Int32 e)
+        private async void showScore(object sender, Int32 e)
         {
             _score = new ScoreWindow();
 
@@ -64,13 +64,13 @@ namespace Core
             switch (e)
             {
                 case 1:
-                    entries = _store.GetLeaderboardAsync(GameTypes.TicTacToe, Scopes.AllTime).Result;
+                    entries = await _store.GetLeaderboardAsync(GameTypes.TicTacToe, Scopes.AllTime);
                     break;
                 case 2:
-                    entries = (IEnumerable<LeaderboardEntry>)_store.GetLeaderboardAsync(GameTypes.NineMensMorris, Scopes.AllTime).Result;
+                    entries = await _store.GetLeaderboardAsync(GameTypes.NineMensMorris, Scopes.AllTime);
                     break;
                 case 3:
-                    entries = (IEnumerable<LeaderboardEntry>)_store.GetLeaderboardAsync(GameTypes.ConnectFour, Scopes.AllTime).Result;
+                    entries = await _store.GetLeaderboardAsync(GameTypes.ConnectFour, Scopes.AllTime);
                     break;
             }
 
