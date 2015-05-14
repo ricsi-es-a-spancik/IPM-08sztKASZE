@@ -27,7 +27,7 @@ namespace TicTacToeGameApp
         {
             _model = Activator.CreateInstanceFrom("TicTacToeModel.dll", "TicTacToeModel.TicTacToeModel")
                 .Unwrap() as ITicTacToeModel;
-            _model.Initialize(new Human(), new Human());
+            _model.Initialize(p1, p2);
             _model.GameOver += new EventHandler<GameOverEventArgs>(Model_GameOver);
 
             _viewModel = Activator.CreateInstanceFrom("TicTacToeViewModel.dll", "TicTacToeViewModel.TicTacToeViewModel")
