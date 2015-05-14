@@ -58,7 +58,8 @@ namespace Core.src.Utils
 
         void original_GameExit(object sender, EventArgs e)
         {
-            this.GameExit(this, e);
+            if (GameExit != null)
+                this.GameExit(this, e);
         }
 
         public void CloseWindow()

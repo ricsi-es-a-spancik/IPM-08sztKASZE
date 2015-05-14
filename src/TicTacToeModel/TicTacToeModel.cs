@@ -192,7 +192,7 @@ namespace TicTacToeModel
                 OnGameOver(winner); // emit game over event with winner player param
                 return true;
             }
-            else if (stepNumber == 9) // it's a draft
+            else if (stepNumber == 9) // it's a draw
             {
                 OnGameOver(null); // emit game over event with no winnner
                 return true;

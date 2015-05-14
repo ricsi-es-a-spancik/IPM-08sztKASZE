@@ -39,6 +39,7 @@ namespace TicTacToeGameApp
 
             _window = Activator.CreateInstanceFrom("TicTacToeView.dll", "TicTacToeView.TicTacToeWindow").Unwrap() as Window;
             _window.DataContext = _viewModel;
+            _window.Closed += new EventHandler(OnWindowClosed);
         }
 
         public void OpenWindow()
@@ -66,6 +67,12 @@ namespace TicTacToeGameApp
         }
 
         private void ViewModel_GameExit()
+        {
+            if (GameExit != null)
+                GameExit(this, null);
+        }
+
+        private void OnWindowClosed(object sender, EventArgs e)
         {
             if (GameExit != null)
                 GameExit(this, null);
